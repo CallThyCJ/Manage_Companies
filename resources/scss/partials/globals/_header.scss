@@ -1,0 +1,25 @@
+#header {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    background-color: $secondary-color;
+
+    #headerItems {
+        display: flex;
+        align-items: center;
+
+        a {
+            &:first-of-type {
+                margin-left: 60px;
+            }
+        }
+
+        img {
+            height: 50px;
+        }
+
+        #userSubMenu {
+            display: none;
+        }
+    }
+}

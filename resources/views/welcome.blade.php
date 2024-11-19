@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!-- Head -->
+    <x-globals.head>
 
-        <title>Manage Companies</title>
-
-        <!-- Fonts -->
-
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles / Scripts -->
-        <script src="https://kit.fontawesome.com/ecb3190b9d.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    </head>
+    </x-globals.head>
 
     <body>
-        <header>
-            <div>
-                
+    <!-- Header -->
+        <x-globals.header>
+
+        </x-globals.header>
+
+    <!-- nav bar -->
+        <x-globals.navbar>
+
+        </x-globals.navbar>
+
+    <!-- company listing -->
+        <div id="companyListingsContainer">
+            <div id="companyListingsTopSection" class="globalContainer">
+                <h2>Company Listings</h2>
+                <a href="">List New Company</a>
             </div>
-        </header>
+
+            <div id="companyListingsBottomSection" class="globalContainer">
+                <div class="listingCardContainer">
+                    <div class="listingCardLeftSection">
+                        <img src="" alt="Company Profile Picture">
+                    </div>
+
+                    <div class="listingCardMiddleSection">
+                        <div class="middleTop">
+                            <h4>Company Title</h4>
+                            <p>Employee Count:</p>
+                        </div>
+
+                        <div class="middleBottom">
+                            <p>Company Email:</p>
+                            <p>Company Website:</p>
+                        </div>
+                    </div>
+
+                    <div class="listingCardRightSection">
+                        <a>edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>

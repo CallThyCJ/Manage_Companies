@@ -1,0 +1,49 @@
+#companyListingsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    #companyListingsTopSection {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #companyListingsBottomSection {
+        display: flex;
+
+        .listingCardContainer {
+            display: flex;
+            height: 170px;
+            width: 1500px;
+            background-color: $tertiary-color;
+
+            .listingCardLeftSection {
+                width: 14%;
+                height: 100%;
+            }
+
+            .listingCardMiddleSection {
+                display: flex;
+                flex-direction: column;
+                width: 75%;
+                height: 100%;
+
+                .middleTop {
+                    height: 70%;
+                }
+
+                .middleBottom {
+                    height: 30%;
+                    display: flex;
+                    gap: 40px;
+                }
+            }
+
+            .listingCardRightSection {
+                width: 11%;
+            }
+        }
+    }
+}

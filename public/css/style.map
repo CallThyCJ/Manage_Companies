@@ -2,9 +2,11 @@
 	"version": 3,
 	"file": "style.css",
 	"sources": [
-		"../../resources/scss/style.scss"
+		"../../resources/scss/style.scss",
+		"../../resources/scss/partials/globals/_header.scss"
 	],
 	"sourcesContent": [
+		"@import \"partials/globals/header\";\n",
 		""
 	],
 	"names": [],

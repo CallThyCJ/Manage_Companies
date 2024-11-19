@@ -1,0 +1,30 @@
+body {
+    box-sizing: border-box;
+    background-color: $primary-color;
+}
+
+.globalContainer {
+    width: 330px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include mq("s") {
+        width: 380px;
+    }
+
+    @include mq("m") {
+        width: 662px;
+    }
+
+    @include mq("l") {
+        width: 992px;
+    }
+
+    @include mq("xl") {
+        width: 1260px;
+    }
+
+    @include mq("xxl") {
+        width: 1682px;
+    }
+}
