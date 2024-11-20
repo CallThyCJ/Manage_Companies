@@ -23,29 +23,31 @@
                 <a href="">List New Company</a>
             </div>
 
-            <div id="companyListingsBottomSection" class="globalContainer">
-                <div class="listingCardContainer">
-                    <div class="listingCardLeftSection">
-                        <img src="" alt="Company Profile Picture">
-                    </div>
-
-                    <div class="listingCardMiddleSection">
-                        <div class="middleTop">
-                            <h4>Company Title</h4>
-                            <p>Employee Count:</p>
+            @foreach($companies as $company)
+                <div id="companyListingsBottomSection" class="globalContainer">
+                    <div class="listingCardContainer">
+                        <div class="listingCardLeftSection">
+                            <img src="{{$company["company_picture"]}}" alt="Company Profile Picture">
                         </div>
 
-                        <div class="middleBottom">
-                            <p>Company Email:</p>
-                            <p>Company Website:</p>
-                        </div>
-                    </div>
+                        <div class="listingCardMiddleSection">
+                            <div class="middleTop">
+                                <h4>{{$company["company_name"]}}</h4>
+                                <p>Employee Count:</p>
+                            </div>
 
-                    <div class="listingCardRightSection">
-                        <a>edit</a>
+                            <div class="middleBottom">
+                                <p>Company Email: {{$company["company_email"]}}</p>
+                                <p>Company Website: {{$company["company_website"]}}</p>
+                            </div>
+                        </div>
+
+                        <div class="listingCardRightSection">
+                            <a>edit</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
 
     </body>

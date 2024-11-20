@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 40px;
 
     #companyListingsTopSection {
         height: 150px;
@@ -22,6 +23,12 @@
             .listingCardLeftSection {
                 width: 14%;
                 height: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: fill;
+                }
             }
 
             .listingCardMiddleSection {
@@ -29,9 +36,14 @@
                 flex-direction: column;
                 width: 75%;
                 height: 100%;
+                padding-left: 30px;
 
                 .middleTop {
                     height: 70%;
+
+                    h4 {
+                        font-size: 1.2rem;
+                    }
                 }
 
                 .middleBottom {
