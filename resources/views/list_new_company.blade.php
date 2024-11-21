@@ -21,20 +21,21 @@
         <h3>Enter Company Details</h3>
 
         <label for="companyName">Company Name</label>
-        <input type="text" name="companyName">
+        <input id="companyName" type="text" name="companyName">
 
         <label for="companyEmail">Company Email</label>
-        <input type="text" name="companyEmail">
+        <input id="companyEmail" type="text" name="companyEmail">
 
         <label for="companyWebsite">Company Website</label>
-        <input type="text" name="companyWebsite">
+        <input id="companyWebsite" type="text" name="companyWebsite">
 
         <label for="companyLogo">Company Logo</label>
-        <input type="file" name="companyLogo">
+        <input id="companyLogo" type="file" name="companyLogo">
 
         <button>create</button>
 
     </form>
 
+    <script src="{{ asset('js/formValidation.js') }}" ></script>
     </body>
 </html>
