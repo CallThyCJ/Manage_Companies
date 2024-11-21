@@ -1,0 +1,38 @@
+#employeeListingsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    #employeeListingsTopSection {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #employeeListingsBottomSection {
+        display: flex;
+        flex-wrap: wrap;
+
+        .employeeCardContainer {
+            display: flex;
+            flex-direction: column;
+            background-color: $tertiary-color;
+            height: 200px;
+            width: 270px;
+            border-radius: 8px;
+
+            .employeeCardTopSection {
+                height: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .employeeCardBottomSection {
+                height: 40%;
+            }
+        }
+    }
+}

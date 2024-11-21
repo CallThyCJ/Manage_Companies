@@ -16,3 +16,8 @@ Route::get('/list_new_company', function () {
 });
 
 Route::post('/list_new_company', [CompanyController::class, 'store'])->name('company.store');
+
+Route::get("/employees", function () {
+
+    return view('/employees');
+});
