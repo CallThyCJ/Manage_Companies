@@ -1,0 +1,22 @@
+#employeeContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    #employeeTopSection {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #employeeBottomSection {
+        #fullEmployeeName {
+            display: flex;
+            gap: 8px;
+        }
+
+        background-color: $tertiary-color;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}

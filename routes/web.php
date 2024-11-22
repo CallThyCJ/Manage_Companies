@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,22 @@ Route::get('/list_new_company', function () {
 Route::post('/list_new_company', [CompanyController::class, 'store'])->name('company.store');
 
 Route::get("/employees", function () {
+    $employeesWithLogo = Employee::fetchWithCompanyLogo();
+    $companies = Company::all();
 
-    return view('/employees');
+    return view('/employees', compact('employeesWithLogo', 'companies'));
+});
+
+route::get("/employees/{id}", function ($id) {
+    $employee = Employee::find($id);
+    $companyID = $employee->company_id;
+    $company = Company::find($companyID);
+
+
+    return view('employee', ["employee" => $employee], compact('company'));
+});
+
+Route::get('/add_new_employee', function () {
+
+    return view('add_new_employee');
 });

@@ -11,5 +11,9 @@ class Company extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = [];
+
+    public function employees() {
+        return $this->hasMany(Employee::class);
+    }
 }
 

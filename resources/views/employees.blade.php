@@ -23,20 +23,22 @@
         <a href="{{url('/add_new_employee')}}">Add New Employee</a>
     </div>
 
-{{--    @foreach($companies as $company)--}}
+
         <div id="employeeListingsBottomSection" class="globalContainer">
-            <div class="employeeCardContainer">
+            @foreach($employeesWithLogo as $employee)
+            <a href="{{url('/employees/'. $employee['id'])}}" class="employeeCardContainer">
                 <div class="employeeCardTopSection">
-                    <p>FIRST NAME</p>
-                    <p>LAST NAME</p>
+                    <p>{{$employee["first_name"]}}</p>
+                    <p>{{$employee["last_name"]}}</p>
                 </div>
 
                 <div class="employeeCardBottomSection">
-                    <img src="" alt="company logo">
+                    <img src="{{$employee["company_logo"]}}" alt="company logo">
                 </div>
-            </div>
+            </a>
+            @endforeach
         </div>
-{{--    @endforeach--}}
+
 </div>
 
 </body>
