@@ -16,7 +16,7 @@
 
 </x-globals.navbar>
 
-<form id="newEmployeeForm" class="globalContainer" method="POST"  enctype="multipart/form-data">
+<form id="newEmployeeForm" class="globalContainer" method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
     @csrf
     <h3>Enter Employee Details</h3>
 
@@ -32,7 +32,10 @@
     <label for="employeePhoneNumber">Phone Number</label>
     <input id="employeePhoneNumber" type="text" name="employeePhoneNumber">
 
-    <button>create</button>
+    <label for="employeeCompany">Company</label>
+    <input id="employeeCompany" type="text" name="employeeCompany">
+
+    <button type="submit">create</button>
 
 </form>
 

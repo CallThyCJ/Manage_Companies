@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,5 @@ Route::get('/add_new_employee', function () {
 
     return view('add_new_employee');
 });
+
+Route::post('/add_new_employee', [EmployeeController::class, 'store'])->name('employee.store');
