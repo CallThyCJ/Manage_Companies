@@ -16,6 +16,8 @@
 
 </x-globals.navbar>
 
+<a href="{{url('/employees/' . $employee['id'])}}" id="employeeProfileLink">Employee Profile</a>
+
 <div class="globalContainer">
     <form id="editEmployeeForm" class="form" method="POST" action="{{ route('employees.update', ['id' => $employee['id']]) }}" enctype="multipart/form-data">
         @csrf

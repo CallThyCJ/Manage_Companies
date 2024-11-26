@@ -1,6 +1,7 @@
 body {
     box-sizing: border-box;
     background-color: $primary-color;
+    color: white;
 }
 
 .globalContainer {
@@ -26,5 +27,22 @@ body {
 
     @include mq("xxl") {
         width: 1682px;
+    }
+}
+
+.editButton {
+    position: absolute;
+    background-color: $secondary-color;
+    height: 35px;
+    width: 50px;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    a {
+        margin-top: auto;
+        margin-bottom: auto;
+        text-decoration: none;
     }
 }

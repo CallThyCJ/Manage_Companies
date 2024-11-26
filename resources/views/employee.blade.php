@@ -28,6 +28,11 @@
             <p>{{$employee["first_name"]}}</p>
             <p>{{$employee["last_name"]}}</p>
         </div>
+
+        <div class="editButton">
+            <a href="{{url('/employees/' . $employee['id'] .'/edit')}}">edit</a>
+        </div>
+
         <ul>
             <li>Company: {{$company["company_name"]}}</li>
             <li>Email: {{$employee["employee_email"]}}</li>
