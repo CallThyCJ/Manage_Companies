@@ -16,28 +16,30 @@
 
 </x-globals.navbar>
 
-<form id="newEmployeeForm" class="globalContainer" method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
-    @csrf
-    <h3>Enter Employee Details</h3>
+<div class="globalContainer">
+    <form id="newEmployeeForm" class="form" method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
+        @csrf
+        <h3>Enter Employee Details</h3>
 
-    <label for="employeeFirstName">First Name</label>
-    <input id="employeeFirstName" type="text" name="employeeFirstName">
+        <label for="employeeFirstName">First Name</label>
+        <input id="employeeFirstName" type="text" name="employeeFirstName">
 
-    <label for="employeeLastName">Last Name</label>
-    <input id="employeeLastName" type="text" name="employeeLastName">
+        <label for="employeeLastName">Last Name</label>
+        <input id="employeeLastName" type="text" name="employeeLastName">
 
-    <label for="employeeEmail">Employee Email</label>
-    <input id="employeeEmail" type="text" name="employeeEmail">
+        <label for="employeeEmail">Employee Email</label>
+        <input id="employeeEmail" type="text" name="employeeEmail">
 
-    <label for="employeePhoneNumber">Phone Number</label>
-    <input id="employeePhoneNumber" type="text" name="employeePhoneNumber">
+        <label for="employeePhoneNumber">Phone Number</label>
+        <input id="employeePhoneNumber" type="text" name="employeePhoneNumber">
 
-    <label for="employeeCompany">Company</label>
-    <input id="employeeCompany" type="text" name="employeeCompany">
+        <label for="employeeCompany">Company</label>
+        <input id="employeeCompany" type="text" name="employeeCompany">
 
-    <button type="submit">create</button>
+        <button type="submit">create</button>
 
-</form>
+    </form>
+</div>
 
 <script src="{{ asset('js/formValidation.js') }}" ></script>
 </body>

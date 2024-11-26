@@ -52,4 +52,67 @@ class EmployeeController extends Controller
 
         return redirect("/employees")->with("message", "Employee has been added");
     }
+
+    public function update(Request $request, $id){
+
+        $inputCompanyText = $request->input('editEmployeeCompany');
+
+//        validation
+        try {
+            $request->validate([
+                "editEmployeeFirstName" => "required|string|max:30",
+                "editEmployeeLastName" => "required|string|max:30",
+                "editEmployeeEmail" => "nullable|string|email|max:80",
+                "editEmployeePhoneNumber" => "nullable|regex:/^[0-9]{10,15}$/|max:15",
+                "editEmployeeCompany" => "required|string|max:100",
+            ]);
+
+            $companyExists= Company::where('company_name', $inputCompanyText)->first();
+
+            if (!$companyExists) {
+                return redirect()->back()->withErrors([
+                    'editEmployeeCompany' => 'The company does not exist in our records.',
+                ])->withInput();
+            }
+
+        } catch (ValidationException $e) {
+            Log::info('Validation Errors:', $e->errors());
+            return redirect()->back()->withErrors($e->errors());
+        }
+
+//        Find the employee
+        $employee = Employee::findOrFail($id);
+
+//        check which information has changed
+        $changes = [];
+        if ($request->input("editEmployeeFirstName") !== $employee->first_name) {
+            $changes["first_name"] = $request->input("editEmployeeFirstName");
+        }
+
+        if ($request->input("editEmployeeLastName") !== $employee->last_name) {
+            $changes["last_name"] = $request->input("editEmployeeLastName");
+        }
+
+        if ($request->input("editEmployeeEmail") !== $employee->email) {
+            $changes["employee_email"] = $request->input("editEmployeeEmail");
+        }
+
+        if ($request->input("editEmployeePhoneNumber") !== $employee->phone_number) {
+            $changes["employee_phone_number"] = $request->input("editEmployeePhoneNumber");
+        }
+
+        if ($companyExists->id !== $employee->company_id) {
+            $changes["company_id"] = $companyExists->id;
+        }
+
+        // If there are no changes, return without updating
+        if (empty($changes)) {
+            return redirect()->back()->with("message", "No changes detected.");
+        } else {
+            // Update the employee details with changes
+            $employee->update($changes);
+        }
+
+        return redirect('/employees/' . $employee->id)->with('message', 'Employee updated successfully!');
+    }
 }

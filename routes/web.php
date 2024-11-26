@@ -35,9 +35,20 @@ route::get("/employees/{id}", function ($id) {
     return view('employee', ["employee" => $employee], compact('company'));
 });
 
+route::get("/employees/{id}/edit", function ($id) {
+    $employee = Employee::findOrFail($id);
+    $companyID = $employee->company_id;
+    $company = Company::find($companyID);
+
+
+    return view('/edit_employee', ['employee' => $employee, 'company' => $company,]);
+});
+
 Route::get('/add_new_employee', function () {
 
     return view('add_new_employee');
 });
 
 Route::post('/add_new_employee', [EmployeeController::class, 'store'])->name('employee.store');
+
+Route::put('/employees/{id}/edit', [EmployeeController::class, 'update'])->name('employees.update');
