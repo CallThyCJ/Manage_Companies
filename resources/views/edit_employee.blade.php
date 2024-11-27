@@ -22,6 +22,8 @@
     <form id="editEmployeeForm" class="form" method="POST" action="{{ route('employees.update', ['id' => $employee['id']]) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <button form="employeeDeleteForm" class="deleteButton">Delete</button>
+
         <h3>Update Employee Details</h3>
 
         <label for="editEmployeeFirstName">First Name</label>
@@ -41,6 +43,11 @@
 
         <button type="submit">confirm</button>
 
+    </form>
+
+    <form method="POST" action="{{ route('employees.destroy', ['id' => $employee['id']]) }}" id="employeeDeleteForm" class="deleteForm">
+        @csrf
+        @method("DELETE")
     </form>
 </div>
 

@@ -12,4 +12,6 @@
     <script src="https://kit.fontawesome.com/ecb3190b9d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+
+    {{ $slot }}
 </head>

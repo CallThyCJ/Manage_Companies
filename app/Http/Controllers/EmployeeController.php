@@ -115,4 +115,17 @@ class EmployeeController extends Controller
 
         return redirect('/employees/' . $employee->id)->with('message', 'Employee updated successfully!');
     }
+
+    public function destroy($id) {
+        $employee = Employee::find($id);
+
+//        check if the employee actually exists
+        if (!$employee) {
+            return redirect("/employees")->with('error', 'Employee not found.');
+        }
+
+        $employee->delete();
+
+        return redirect("/employees")->with('message', 'Employee deleted successfully!');
+    }
 }

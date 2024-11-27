@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <!-- Head -->
 <x-globals.head>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </x-globals.head>
 
 <body>
