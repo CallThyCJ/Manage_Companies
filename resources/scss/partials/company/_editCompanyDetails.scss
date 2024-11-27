@@ -1,0 +1,16 @@
+#editCompanyForm {
+    position: relative;
+
+    #editCompanyTitle {
+        display: flex;
+
+        img {
+            height: 70px;
+            width: 70px;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border-radius: 3px;
+        }
+    }
+}

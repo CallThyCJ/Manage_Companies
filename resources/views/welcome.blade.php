@@ -20,7 +20,7 @@
         <div id="companyListingsContainer">
             <div id="companyListingsTopSection" class="globalContainer">
                 <h2>Company Listings</h2>
-                <a href="{{url('/list_new_company')}}">List New Company</a>
+                <a href="{{url('/company')}}">List New Company</a>
             </div>
 
             @foreach($companies as $company)
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="listingCardRightSection">
-                            <a>edit</a>
+                            <a href="{{url('/' . $company["id"])}}">edit</a>
                         </div>
                     </div>
                 </div>

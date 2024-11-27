@@ -51,4 +51,70 @@ class CompanyController extends Controller
 
         return redirect("/")->with("message", "Company has been added");
     }
+
+    public function update(Request $request, $id){
+
+        // Automatically add 'https://' if the companyWebsite doesn't have it
+        $companyWebsite = $request->input('editCompanyWebsite');
+
+        if (!empty($companyWebsite) && !preg_match("~^(?:f|ht)tps?://~i", $companyWebsite)) {
+            $companyWebsite = 'https://' . $companyWebsite;
+        }
+
+//        validation
+        try {
+            $request->validate([
+                "editCompanyName" => "required|string|max:30",
+                "editCompanyEmail" => "required|string|max:30",
+                $companyWebsite => "nullable|string|url|max:80",
+                "editCompanyLogo" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            ]);
+
+        } catch (ValidationException $e) {
+            Log::info('Validation Errors:', $e->errors());
+            return redirect()->back()->withErrors($e->errors());
+        }
+
+        if($request->hasFile("editCompanyLogo")){
+            $logopath = $request->file("editCompanyLogo")->store("company_logos", "public");
+
+            $logopathUrl = asset('storage/' . $logopath);
+        } else {
+            $logopathUrl = null;
+        }
+
+
+//        Find the Company
+        $company = Company::findOrFail($id);
+
+//        check which information has changed
+        $changes = [];
+        if ($request->input("editCompanyName") !== $company->company_name) {
+            $changes["company_name"] = $request->input("editCompanyName");
+        }
+
+        if ($request->input("editCompanyEmail") !== $company->company_email) {
+            $changes["company_email"] = $request->input("editCompanyEmail");
+        }
+
+        if ($companyWebsite !== $company->company_website) {
+            $changes["company_website"] = $companyWebsite;
+        }
+
+        if ($logopathUrl !== null && $logopathUrl !== $company->company_picture) {
+            $changes["company_picture"] = $logopathUrl;
+        } else {
+            $changes["company_picture"] = $company->company_picture;
+        }
+
+        // If there are no changes, return without updating
+        if (empty($changes)) {
+            return redirect()->back()->with("message", "No changes detected.");
+        } else {
+            // Update the employee details with changes
+            $company->update($changes);
+        }
+
+        return redirect('/' . $company->id)->with('message', 'Employee updated successfully!');
+    }
 }

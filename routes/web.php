@@ -12,12 +12,30 @@ Route::get('/', function () {
     return view('welcome', compact('companies'));
 });
 
-Route::get('/list_new_company', function () {
+Route::get('/company', function () {
 
-    return view('list_new_company');
+    return view('company');
 });
 
-Route::post('/list_new_company', [CompanyController::class, 'store'])->name('company.store');
+Route::post('/company', [CompanyController::class, 'store'])->name('company.store');
+
+route::get("/{id}", function ($id) {
+    $company = Company::findOrFail($id);
+
+
+    return view('company', ["company" => $company]);
+});
+
+route::get("/{id}/edit", function ($id) {
+    $company = Company::findOrFail($id);
+
+
+    return view('/edit_company', ['company' => $company]);
+});
+
+Route::put('/{id}/edit', [CompanyController::class, 'update'])->name('company.update');
+
+Route::delete('/{id}', [CompanyController::class, 'destroy'])->name('company.destroy');
 
 Route::get("/employees", function () {
     $employeesWithLogo = Employee::fetchWithCompanyLogo();
