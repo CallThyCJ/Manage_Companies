@@ -117,4 +117,17 @@ class CompanyController extends Controller
 
         return redirect('/' . $company->id)->with('message', 'Employee updated successfully!');
     }
+
+    public function destroy($id) {
+        $company = Company::find($id);
+
+//        check if the employee actually exists
+        if (!$company) {
+            return redirect("/")->with('error', 'Employee not found.');
+        }
+
+        $company->delete();
+
+        return redirect("/")->with('message', 'Employee deleted successfully!');
+    }
 }
