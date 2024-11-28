@@ -41,5 +41,9 @@
 
 </div>
 
+<div class="laravelPagination globalContainer">
+    {{$employeesWithLogo->links()}}
+</div>
+
 </body>
 </html>

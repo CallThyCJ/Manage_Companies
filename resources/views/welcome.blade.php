@@ -50,5 +50,9 @@
             @endforeach
         </div>
 
+    <div class="laravelPagination globalContainer">
+        {{$companies->links()}}
+    </div>
+
     </body>
 </html>

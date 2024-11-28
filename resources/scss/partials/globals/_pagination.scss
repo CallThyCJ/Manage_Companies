@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+
+    a {
+        &:link {
+            color: white;
+        }
+
+        &:visited {
+            color: white;
+        }
+
+        &:active {
+            font-weight: bold;
+        }
+
+        text-decoration: none;
+    }
+
+    li {
+        &.active {
+            font-weight: 1000;
+            color: #f0f0f0;
+        }
+    }
+}

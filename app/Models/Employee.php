@@ -18,20 +18,23 @@ class Employee extends Model
     }
 
     public static function fetchWithCompanyLogo() {
-        $employeesWithLogo = [];
+//        $employeesWithLogo = [];
+//
+//        $employees = Employee::all();
+//        foreach ($employees as $employee) {
+//            $company = $employee->company;
+//
+//            $employeesWithLogo[] = [
+//                "first_name" => $employee->first_name,
+//                "last_name" => $employee->last_name,
+//                "id" => $employee->id,
+//                "company_logo" => $company ? $company->company_picture : null,
+//            ];
+//        }
 
-        $employees = Employee::all();
-        foreach ($employees as $employee) {
-            $company = $employee->company;
 
-            $employeesWithLogo[] = [
-                "first_name" => $employee->first_name,
-                "last_name" => $employee->last_name,
-                "id" => $employee->id,
-                "company_logo" => $company ? $company->company_picture : null,
-            ];
-        }
+//        return $employeesWithLogo;
 
-        return $employeesWithLogo;
+        return Employee::with("company")->select("employees.*")->leftJoin("companies", "employees.company_id", "=", "companies.id")->addSelect("companies.company_picture as company_logo");
     }
 }

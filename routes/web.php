@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $companies = Company::all();
+    $companies = Company::simplePaginate(8);
     return view('welcome', compact('companies'));
 });
 
@@ -19,14 +19,21 @@ Route::get('/company', function () {
 
 Route::post('/company', [CompanyController::class, 'store'])->name('company.store');
 
-route::get("/{id}", function ($id) {
+Route::get("/employees", function () {
+    $employeesWithLogo = Employee::fetchWithCompanyLogo()->simplePaginate(30);
+    $companies = Company::all();
+
+    return view('employees', compact('employeesWithLogo', 'companies'));
+});
+
+Route::get("/{id}", function ($id) {
     $company = Company::findOrFail($id);
 
 
     return view('company', ["company" => $company]);
 });
 
-route::get("/{id}/edit", function ($id) {
+Route::get("/{id}/edit", function ($id) {
     $company = Company::findOrFail($id);
 
 
@@ -36,13 +43,6 @@ route::get("/{id}/edit", function ($id) {
 Route::put('/{id}/edit', [CompanyController::class, 'update'])->name('company.update');
 
 Route::delete('/{id}', [CompanyController::class, 'destroy'])->name('company.destroy');
-
-Route::get("/employees", function () {
-    $employeesWithLogo = Employee::fetchWithCompanyLogo();
-    $companies = Company::all();
-
-    return view('/employees', compact('employeesWithLogo', 'companies'));
-});
 
 route::get("/employees/{id}", function ($id) {
     $employee = Employee::find($id);

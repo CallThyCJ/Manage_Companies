@@ -44,6 +44,15 @@ body {
         margin-top: auto;
         margin-bottom: auto;
         text-decoration: none;
+        color: white;
+
+        &:link {
+            color: white;
+        }
+
+        &:visited {
+            color: white;
+        }
     }
 }
 
