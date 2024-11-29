@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,13 @@ Route::get("/employees", function () {
 
     return view('employees', compact('employeesWithLogo', 'companies'));
 });
+
+Route::get('/register', function () {
+
+    return view('auth.register');
+});
+
+Route::post("/register", [UserController::class, "store"])->name('user.store');
 
 Route::get("/{id}", function ($id) {
     $company = Company::findOrFail($id);
