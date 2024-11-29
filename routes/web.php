@@ -34,6 +34,13 @@ Route::get('/register', function () {
 
 Route::post("/register", [UserController::class, "store"])->name('user.store');
 
+Route::get('/login', function () {
+
+    return view('auth.login');
+})->name('user.login');
+
+Route::post("/login", [UserController::class, "login"])->name('user.login');
+
 Route::get("/{id}", function ($id) {
     $company = Company::findOrFail($id);
 
