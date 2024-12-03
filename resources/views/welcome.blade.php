@@ -35,7 +35,7 @@
                         <div class="listingCardMiddleSection">
                             <div class="middleTop">
                                 <h4>{{$company["company_name"]}}</h4>
-                                <p>Employee Count:</p>
+                                <p>Employee Count: {{$company->employees_count}}</p>
                             </div>
 
                             <div class="middleBottom">

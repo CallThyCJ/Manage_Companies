@@ -15,5 +15,12 @@ class Company extends Model
     public function employees() {
         return $this->hasMany(Employee::class);
     }
+
+    public function employeeCount($id) {
+        $company = Company::find($id);
+        $employeeCount = $company->employees()->count();
+
+        return $employeeCount;
+    }
 }
 

@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $companies = Company::simplePaginate(8);
+    $companies = Company::withCount('employees')->simplePaginate(8);
+
     return view('welcome', compact('companies'));
 })->name("Companies");
 
