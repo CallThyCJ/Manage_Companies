@@ -20,7 +20,9 @@
 <div id="employeeListingsContainer">
     <div id="employeeListingsTopSection" class="globalContainer">
         <h2>All Employees</h2>
+        @if(Auth::check() && Auth::user()->admin)
         <a href="{{url('/add_new_employee')}}">Add New Employee</a>
+        @endif
     </div>
 
 

@@ -19,8 +19,10 @@
     <!-- company listing -->
         <div id="companyListingsContainer">
             <div id="companyListingsTopSection" class="globalContainer">
-                <h2>Company Listings</h2>
-                <a href="{{url('/company')}}">List New Company</a>
+                @if(Auth::check() && Auth::user()->admin)
+                    <h2>Company Listings</h2>
+                    <a href="{{url('/list_new_company')}}">List New Company</a>
+                @endif
             </div>
 
             @foreach($companies as $company)
@@ -43,7 +45,9 @@
                         </div>
 
                         <div class="listingCardRightSection">
+                            @if(Auth::check() && Auth::user()->admin)
                             <a href="{{url('/' . $company["id"])}}">edit</a>
+                            @endif
                         </div>
                     </div>
                 </div>

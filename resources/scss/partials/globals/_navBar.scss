@@ -1,13 +1,45 @@
 #navBar {
+    box-sizing: border-box;
     height: 120px;
     width: 100%;
     background-color: $secondary-color;
-    border-top: solid 1px gray;
+    border-top: solid 1px $primary-color;
 
     #navBarItems {
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        #searchBar {
+            display: flex;
+
+            input {
+                height: 40px;
+                width: 250px;
+                border-right: none;
+                background-color: darkgray;
+                border-color: $tertiary-color;
+                border-top: solid 2px $tertiary-color;
+                border-left: solid 2px $tertiary-color;
+                color: white;
+            }
+
+            button {
+                height: 46px;
+                border-left: none;
+                background-color: darkgray;
+                border: solid 2px $tertiary-color;
+                border-left: none;
+
+                .fa-magnifying-glass {
+                    color: $tertiary-color;
+                }
+            }
+        }
     }
 }

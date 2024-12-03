@@ -4,9 +4,22 @@
     width: 100%;
     background-color: $secondary-color;
 
+    a {
+        &:link {
+            color: white;
+        }
+
+        &:visited {
+            color: white;
+        }
+
+        text-decoration: none;
+    }
+
     #headerItems {
         display: flex;
         align-items: center;
+        gap: 35px;
 
         a {
             &:first-of-type {
@@ -16,6 +29,12 @@
 
         img {
             height: 50px;
+        }
+
+        #userMenu {
+            display: flex;
+            gap: 35px;
+            margin-left: auto;
         }
 
         #userSubMenu {

@@ -2,14 +2,27 @@
     <div id="header" class="headerContainer">
         <div id="headerItems" class="globalContainer">
             <img src="{{ asset('assets/logo.png')}}">
-            <a href="">Companies</a>
+            <a href="{{url("/")}}">Companies</a>
+            <a href="{{url("/employees")}}">Employees</a>
 
             <div id="userMenu">
-                <h3>User Name here</h3>
+                @auth()
+                <h3>{{Auth::user()->username}}</h3>
+
+                    <form method="POST" action="{{route('user.logout')}}" enctype="multipart/form-data">
+                        @csrf
+                        <button>Log Out</button>
+                    </form>
+                @endauth
+
+                @guest()
+                    <a href="{{url("/register")}}">Register</a>
+                        <a href="{{url("/login")}}">Log In</a>
+                    @endguest
+
 
                 <div id="userSubMenu">
                     <a>Profile</a>
-                    <a>Log Out</a>
                 </div>
             </div>
         </div>

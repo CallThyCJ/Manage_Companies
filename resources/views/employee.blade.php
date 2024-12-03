@@ -29,9 +29,11 @@
             <p>{{$employee["last_name"]}}</p>
         </div>
 
-        <div class="editButton">
-            <a href="{{url('/employees/' . $employee['id'] .'/edit')}}">edit</a>
-        </div>
+        @if(Auth::check() && Auth::user()->admin)
+            <div class="editButton">
+                <a href="{{url('/employees/' . $employee['id'] .'/edit')}}">edit</a>
+            </div>
+        @endif
 
         <ul>
             <li>Company: {{$company["company_name"]}}</li>

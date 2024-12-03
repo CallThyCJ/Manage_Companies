@@ -55,7 +55,7 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $request->input('loginUserEmail'), 'password' => $request->input('loginUserPassword')])) {
             $request->session()->regenerate();
-            return redirect()->intended("/");
+            return redirect()->intended("/")->with("username", Auth::user()->username);
         } else {
             return back()->with('error', 'Invalid email or password');
         }

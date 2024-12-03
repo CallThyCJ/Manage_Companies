@@ -11,7 +11,7 @@ Route::get('/', function () {
 
     $companies = Company::simplePaginate(8);
     return view('welcome', compact('companies'));
-});
+})->name("Companies");
 
 Route::get('/company', function () {
 
@@ -20,12 +20,17 @@ Route::get('/company', function () {
 
 Route::post('/company', [CompanyController::class, 'store'])->name('company.store');
 
+route::get('/list_new_company', function () {
+
+    return view('/list_new_company');
+});
+
 Route::get("/employees", function () {
     $employeesWithLogo = Employee::fetchWithCompanyLogo()->simplePaginate(30);
     $companies = Company::all();
 
     return view('employees', compact('employeesWithLogo', 'companies'));
-});
+})->name("Employees");
 
 Route::get('/register', function () {
 
@@ -40,6 +45,8 @@ Route::get('/login', function () {
 })->name('user.login');
 
 Route::post("/login", [UserController::class, "login"])->name('user.login');
+
+Route::post("/logout", [UserController::class, "logout"])->name('user.logout');
 
 Route::get("/{id}", function ($id) {
     $company = Company::findOrFail($id);

@@ -1,11 +1,11 @@
 <div id="navBar">
     <div id="navBarItems" class="globalContainer">
-        <h2>Companies</h2>
+        <h2>{{Route::currentRouteName()}}</h2>
 
         <div id="searchBar">
-            <input type="text" placeholder="Search Companies...">
+            <input type="text" placeholder="Search {{Route::currentRouteName()}}...">
             <button>
-                Search
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
     </div>
