@@ -1,3 +1,20 @@
+* {
+    box-sizing: border-box;
+
+    a {
+        text-decoration: none;
+        color: white;
+
+        &:link {
+            color: white;
+        }
+
+        &:visited {
+            color: white;
+        }
+    }
+}
+
 body {
     box-sizing: border-box;
     background-color: $primary-color;
@@ -8,6 +25,8 @@ body {
     width: 330px;
     margin-right: auto;
     margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
 
     @include mq("s") {
         width: 380px;

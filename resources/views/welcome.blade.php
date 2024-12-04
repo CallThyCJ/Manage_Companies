@@ -19,8 +19,8 @@
     <!-- company listing -->
         <div id="companyListingsContainer">
             <div id="companyListingsTopSection" class="globalContainer">
-                @if(Auth::check() && Auth::user()->admin)
                     <h2>Company Listings</h2>
+                @if(Auth::check() && Auth::user()->admin)
                     <a href="{{url('/list_new_company')}}">List New Company</a>
                 @endif
             </div>
@@ -29,7 +29,7 @@
                 <div id="companyListingsBottomSection" class="globalContainer">
                     <div class="listingCardContainer">
                         <div class="listingCardLeftSection">
-                            <img src="{{$company["company_picture"]}}" alt="Company Profile Picture">
+                            <img src="{{$company["company_picture"] ?? asset('default_images/default_company_picture.png')}}" alt="Company Profile Picture">
                         </div>
 
                         <div class="listingCardMiddleSection">
@@ -39,8 +39,16 @@
                             </div>
 
                             <div class="middleBottom">
-                                <p>Company Email: {{$company["company_email"]}}</p>
-                                <p>Company Website: {{$company["company_website"]}}</p>
+                                <div class="middleBottomEmail">
+                                    <p>Company Email: </p>
+                                    <p>{{$company["company_email"]}}</p>
+                                </div>
+                                <div class="middleBottomWebsite">
+                                    <p>Company Website: </p>
+                                    <a href="{{$company['company_website']}}" target="_blank" rel="noopener">
+                                        {{ parse_url($company['company_website'], PHP_URL_HOST) ?? $company['company_website'] }}
+                                    </a>
+                                </div>
                             </div>
                         </div>
 

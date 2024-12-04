@@ -1,9 +1,17 @@
 #navBar {
     box-sizing: border-box;
-    height: 120px;
+    height: 90px;
     width: 100%;
     background-color: $secondary-color;
     border-top: solid 1px $primary-color;
+
+    @include mq("l") {
+        height: 105px;
+    }
+
+    @include mq("xl") {
+        height: 120px;
+    }
 
     #navBarItems {
         height: 100%;
@@ -12,21 +20,41 @@
         justify-content: space-between;
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.2rem;
+
+            @include mq("m") {
+                font-size: 1.4rem;
+            }
+
+            @include mq("xxl") {
+                font-size: 2rem;
+            }
         }
 
         #searchBar {
             display: flex;
 
             input {
-                height: 40px;
-                width: 250px;
+                height: 46px;
+                width: 150px;
                 border-right: none;
                 background-color: darkgray;
                 border-color: $tertiary-color;
                 border-top: solid 2px $tertiary-color;
                 border-left: solid 2px $tertiary-color;
                 color: white;
+
+                @include mq("m") {
+                    width: 250px;
+                }
+
+                @include mq("l") {
+                    width: 340px;
+                }
+
+                @include mq("xxl") {
+                    width: 450px;
+                }
             }
 
             button {

@@ -9,20 +9,61 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include mq("l") {
+            font-size: 1.4rem;
+        }
+
+        @include mq("xxl") {
+            font-size: 1.6rem;
+        }
     }
 
     #companyListingsBottomSection {
         display: flex;
+        justify-content: center;
 
         .listingCardContainer {
             display: flex;
-            height: 170px;
-            width: 1500px;
+            width: 310px;
+            height: 120px;
             background-color: $tertiary-color;
 
+            @include mq("s") {
+                width: 350px;
+            }
+
+            @include mq("m") {
+                width: 650px;
+            }
+
+            @include mq("l") {
+                width: 985px;
+                height: 150px;
+            }
+
+            @include mq("xl") {
+                width: 1200px;
+            }
+
+            @include mq("xxl") {
+                height: 170px;
+                width: 1500px;
+            }
+
             .listingCardLeftSection {
-                width: 14%;
+                width: 25%;
                 height: 100%;
+                margin-right: 11px;
+
+                @include mq("xl") {
+                    width: 14%;
+                    margin-right: 25px;
+                }
+
+                @include mq("xxl") {
+                    margin-right: 0;
+                }
 
                 img {
                     height: 100%;
@@ -34,22 +75,141 @@
             .listingCardMiddleSection {
                 display: flex;
                 flex-direction: column;
-                width: 75%;
+                width: 64%;
                 height: 100%;
-                padding-left: 30px;
+
+                @include mq("xl") {
+                    width: 75%;
+                }
+
+                @include mq("xxl") {
+                    width: 75%;
+                    padding-left: 30px;
+                }
 
                 .middleTop {
-                    height: 70%;
+                    height: 60%;
+
+                    @include mq("xxl") {
+                        height: 70%;
+                    }
 
                     h4 {
-                        font-size: 1.2rem;
+                        margin-top: 8px;
+                        font-size: 0.9rem;
+
+                        @include mq("m") {
+                            font-size: 1.1rem;
+                        }
+
+                        @include mq("l") {
+                            font-size: 1.4rem;
+                        }
+
+                        @include mq("xl") {
+                            margin-top: 14px;
+                            font-size: 1.5rem;
+                        }
+
+                        @include mq("xxl") {
+                            margin-top: 20px;
+                            font-size: 1.6rem;
+                        }
+                    }
+
+                    p {
+                        font-size: 0.8rem;
+
+                        @include mq("l") {
+                            font-size: 1rem;
+                        }
+
+                        @include mq("m") {
+                            font-size: 1.1rem;
+                        }
+
+                        @include mq("xxl") {
+                            font-size: 1.3rem;
+                        }
                     }
                 }
 
                 .middleBottom {
-                    height: 30%;
+                    height: 40%;
                     display: flex;
-                    gap: 40px;
+                    flex-direction: column;
+
+                    @include mq("m") {
+                        flex-direction: row;
+                        gap: 20px;
+                    }
+
+                    .middleBottomEmail, .middleBottomWebsite {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+
+                    .middleBottomEmail {
+                        p {
+                            margin-bottom: 5px;
+
+                            @include mq("m") {
+                                margin-bottom: 8.800px;
+                            }
+
+                            @include mq("l") {
+                                margin-bottom: 14.400px;
+                            }
+
+                            @include mq("xl") {
+                                margin-bottom: 16px;
+                            }
+
+                            @include mq("xxl") {
+                                margin-bottom: 19.200px;
+                            }
+                        }
+                    }
+
+                    @include mq("xxl") {
+                        height: 30%;
+                        gap: 40px;
+                        flex-direction: row;
+                    }
+
+                    p, a {
+                        font-size: 0.55rem;
+
+                        @include mq("m") {
+                            font-size: 0.66rem;
+                        }
+
+                        @include mq("l") {
+                            font-size: 0.9rem;
+                        }
+
+                        @include mq("xl") {
+                            font-size: 1rem;
+                        }
+
+                        @include mq("xxl") {
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+
+                        &:link {
+                            color: white;
+                        }
+
+                        &:visited {
+                            color: white;
+                        }
+                    }
                 }
             }
 

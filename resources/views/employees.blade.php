@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="employeeCardBottomSection">
-                    <img src="{{$employee["company_logo"]}}" alt="company logo">
+                    <img src="{{$employee["company_logo"] ?? asset('default_images/default_company_picture.png')}}" alt="company logo">
                 </div>
             </a>
             @endforeach
