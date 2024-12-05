@@ -1,7 +1,9 @@
 <header>
     <div id="header" class="headerContainer">
         <div id="headerItems" class="globalContainer">
-            <img src="{{ asset('assets/logo.png')}}">
+            <a href="{{url("/")}}">
+                <img src="{{ asset('assets/logo.png')}}">
+            </a>
             <a href="{{url("/")}}">Companies</a>
             <a href="{{url("/employees")}}">Employees</a>
 

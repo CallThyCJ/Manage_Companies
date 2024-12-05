@@ -5,13 +5,18 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Models\Company;
 use App\Models\Employee;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    $search = $request->input('search');
 
-    $companies = Company::withCount('employees')->simplePaginate(8);
+    $companies = Company::withCount('employees')
+        ->when($search, function ($query, $search) {
+            return $query->where('company_name', 'like', "%{$search}%");
+        })
+        ->simplePaginate(8);
 
-    return view('welcome', compact('companies'));
+    return view('welcome', compact('companies', 'search'));
 })->name("Companies");
 
 Route::get('/company', function () {
@@ -26,8 +31,14 @@ route::get('/list_new_company', function () {
     return view('/list_new_company');
 });
 
-Route::get("/employees", function () {
-    $employeesWithLogo = Employee::fetchWithCompanyLogo()->simplePaginate(30);
+Route::get("/employees", function (Request $request) {
+    $search = $request->input('search');
+
+    $employeesWithLogo = Employee::fetchWithCompanyLogo()->when($search, function ($query, $search) {
+        return $query->where('first_name', 'like', "%{$search}%")
+                    ->orWhere('last_name', 'like', '%' . $search . '%');
+    })
+    ->simplePaginate(30);
     $companies = Company::all();
 
     return view('employees', compact('employeesWithLogo', 'companies'));
@@ -36,14 +47,14 @@ Route::get("/employees", function () {
 Route::get('/register', function () {
 
     return view('auth.register');
-});
+})->name('register');
 
 Route::post("/register", [UserController::class, "store"])->name('user.store');
 
 Route::get('/login', function () {
 
     return view('auth.login');
-})->name('user.login');
+})->name('login');
 
 Route::post("/login", [UserController::class, "login"])->name('user.login');
 

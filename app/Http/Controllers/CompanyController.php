@@ -130,4 +130,14 @@ class CompanyController extends Controller
 
         return redirect("/")->with('message', 'Employee deleted successfully!');
     }
+
+    public function index(request $request) {
+        $search = $request->input("search");
+
+        $companies = Company::query()->when($search, function ($query) use ($search) {
+            return $query->where('company_name', 'like', '%' . $search . '%');
+        })->get();
+
+        return view('/', compact('companies', 'search'));
+    }
 }

@@ -12,7 +12,7 @@
         </x-globals.header>
 
     <!-- nav bar -->
-        <x-globals.navbar>
+        <x-globals.navbar :action="route('Companies')">
 
         </x-globals.navbar>
 
@@ -25,8 +25,12 @@
                 @endif
             </div>
 
-            @foreach($companies as $company)
-                <div id="companyListingsBottomSection" class="globalContainer">
+            @if(request('search'))
+{{--                <p>Search results for "{{ request('search') }}":</p>--}}
+            @endif
+
+            @forelse($companies as $company)
+            <div id="companyListingsBottomSection" class="globalContainer">
                     <div class="listingCardContainer">
                         <div class="listingCardLeftSection">
                             <img src="{{$company["company_picture"] ?? asset('default_images/default_company_picture.png')}}" alt="Company Profile Picture">
@@ -59,7 +63,10 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+
+            @empty
+                <p>No companies found.</p>
+            @endforelse
         </div>
 
     <div class="laravelPagination globalContainer">

@@ -17,7 +17,7 @@
 </x-globals.navbar>
 
 <div class="globalContainer">
-    <form id="loginForm" class="form" method="POST" action="{{route('user.login')}}" enctype="multipart/form-data">
+    <form id="loginForm" class="form" method="POST" action="{{route('login')}}" enctype="multipart/form-data">
         @csrf
         <h3>Enter User Details</h3>
 

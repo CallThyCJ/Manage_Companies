@@ -128,4 +128,15 @@ class EmployeeController extends Controller
 
         return redirect("/employees")->with('message', 'Employee deleted successfully!');
     }
+
+    public function index(request $request) {
+        $search = $request->input("search");
+
+        $employees = Employee::query()->when($search, function ($query) use ($search) {
+            return $query->where('first_name', 'like', '%' . $search . '%')
+                        ->orWhere('last_name', 'like', '%' . $search . '%');
+        })->get();
+
+        return view('/employees', compact('employees', 'search'));
+    }
 }
