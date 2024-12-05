@@ -31,6 +31,11 @@ route::get('/list_new_company', function () {
     return view('/list_new_company');
 });
 
+Route::get('/add_new_employee', function () {
+
+    return view('add_new_employee');
+});
+
 Route::get("/employees", function (Request $request) {
     $search = $request->input('search');
 
@@ -94,11 +99,6 @@ route::get("/employees/{id}/edit", function ($id) {
 
 
     return view('/edit_employee', ['employee' => $employee, 'company' => $company,]);
-});
-
-Route::get('/add_new_employee', function () {
-
-    return view('add_new_employee');
 });
 
 Route::post('/add_new_employee', [EmployeeController::class, 'store'])->name('employee.store');

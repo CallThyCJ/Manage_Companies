@@ -11,11 +11,6 @@
 
 </x-globals.header>
 
-<!-- nav bar -->
-<x-globals.navbar>
-
-</x-globals.navbar>
-
 <div class="globalContainer">
     <form id="newEmployeeForm" class="form" method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
         @csrf

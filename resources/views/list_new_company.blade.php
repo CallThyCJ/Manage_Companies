@@ -11,12 +11,7 @@
 
     </x-globals.header>
 
-    <!-- nav bar -->
-    <x-globals.navbar>
-
-    </x-globals.navbar>
-
-    <form id="newCompanyForm" class="globalContainer" method="POST" action="{{route('company.store')}}" enctype="multipart/form-data">
+    <form id="newCompanyForm" class="globalContainer form" method="POST" action="{{route('company.store')}}" enctype="multipart/form-data">
         @csrf
         <h3>Enter Company Details</h3>
 

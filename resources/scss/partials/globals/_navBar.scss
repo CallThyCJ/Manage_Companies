@@ -67,6 +67,10 @@
                 .fa-magnifying-glass {
                     color: $tertiary-color;
                 }
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }

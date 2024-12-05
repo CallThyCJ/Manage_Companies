@@ -43,6 +43,10 @@
         @include mq("m") {
             width: 300px;
         }
+
+        &.error {
+            border-color: red;
+        }
     }
 }
 

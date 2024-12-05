@@ -41,6 +41,6 @@
     </form>
 </div>
 
-{{--<script src="{{ asset('js/formValidation.js') }}" ></script>--}}
+<script src="{{ asset('js/formValidation.js') }}" ></script>
 </body>
 </html>
