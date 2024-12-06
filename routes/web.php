@@ -14,7 +14,7 @@ Route::get('/', function (Request $request) {
         ->when($search, function ($query, $search) {
             return $query->where('company_name', 'like', "%{$search}%");
         })
-        ->simplePaginate(8);
+        ->simplePaginate(10);
 
     return view('welcome', compact('companies', 'search'));
 })->name("Companies");
@@ -43,7 +43,7 @@ Route::get("/employees", function (Request $request) {
         return $query->where('first_name', 'like', "%{$search}%")
                     ->orWhere('last_name', 'like', '%' . $search . '%');
     })
-    ->simplePaginate(30);
+    ->simplePaginate(10);
     $companies = Company::all();
 
     return view('employees', compact('employeesWithLogo', 'companies'));
