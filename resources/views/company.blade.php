@@ -11,19 +11,14 @@
 
 </x-globals.header>
 
-<!-- nav bar -->
-<x-globals.navbar>
-
-</x-globals.navbar>
-
 <!-- Employee Information -->
-<div id="companyContainer">
-    <div id="companyTopSection" class="globalContainer">
+<div id="companyContainer" class="globalContainer">
+    <div id="companyTopSection">
         <h2>Company Details</h2>
         <a href="{{url('/')}}">Back To Companies Page</a>
     </div>
 
-    <div id="companyBottomSection" class="globalContainer">
+    <div id="companyBottomSection">
         <p>{{$company["company_name"]}}</p>
 
         <div class="editButton">
