@@ -33,7 +33,7 @@
             <div id="companyListingsBottomSection" class="globalContainer">
                     <div class="listingCardContainer">
                         <div class="listingCardLeftSection">
-                            <img src="{{$company["company_picture"] ?? asset('default_images/default_company_picture.png')}}" alt="Company Profile Picture">
+                            <img src="{{$company["company_picture"] ?? asset('default_images/default_company_picture.png')}}" alt="Company Profile Picture" loading="lazy">
                         </div>
 
                         <div class="listingCardMiddleSection">
