@@ -46,23 +46,45 @@ document.addEventListener("DOMContentLoaded", function () {
 function validation(event, formType) {
     const emailRegex = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const usernameErrors = document.getElementsByClassName("usernameError");
+    const emailErrors = document.getElementsByClassName("emailError");
+    const passwordErrors = document.getElementsByClassName("passwordError");
+    const phoneErrors = document.getElementsByClassName("phoneError");
+    const firstNameErrors = document.getElementsByClassName("firstNameError");
+    const lastNameErrors = document.getElementsByClassName("lastNameError");
+
 
     if (formType === "company") {
         const nameInput = document.getElementById("companyName");
         const emailInput = document.getElementById("companyEmail");
         const companyWebsite = document.getElementById("companyWebsite");
         const companyLogo = document.getElementById("companyLogo");
+        const nameError = document.getElementsByClassName("companyNameError");
+        const websiteError = document.getElementsByClassName("companyWebsiteError");
+        const logoError = document.getElementsByClassName("companyLogoError");
 
 //     clear any previous errors
         let errors = [];
         nameInput.classList.remove("error");
         emailInput.classList.remove("error");
         companyWebsite.classList.remove("error");
+        Array.from(nameError).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(websiteError).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(logoError).forEach(error => {
+            error.classList.remove("error");
+        });
 
 //     validate company name
         if (nameInput.value.trim() === "") {
             errors.push("Company Name is required");
             nameInput.classList.add("error");
+            Array.from(nameError).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         // validate company email
@@ -70,6 +92,9 @@ function validation(event, formType) {
         if (!emailRegex.test(emailInput.value)) {
             errors.push("please enter a valid email address");
             emailInput.classList.add("error");
+            Array.from(emailErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
 //    validate company website url
@@ -77,12 +102,18 @@ function validation(event, formType) {
         if (companyWebsite.value.trim() === "" && !urlRegex.test(companyWebsite.value)) {
             errors.push("please enter a valid url");
             companyWebsite.classList.add("error");
+            Array.from(websiteError).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
 //     validate logo
         const allowedFileTypes = /(\.jpg|\.jpeg|\.png|\.gif|\.svg)$/i;
         if (companyLogo.files.length !== 0 && !allowedFileTypes.test(companyLogo.files[0].name)) {
             errors.push("Please upload a valid image (jpeg, png, gif, svg).");
+            Array.from(logoError).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
 
@@ -104,23 +135,44 @@ function validation(event, formType) {
         lastNameInput.classList.remove("error");
         emailInput.classList.remove("error");
         phoneNumberInput.classList.remove("error");
+        Array.from(phoneErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(firstNameErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(lastNameErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(emailErrors).forEach(error => {
+            error.classList.remove("error");
+        });
 
 //     validate employee first name
         if (firstNameInput.value.trim() === "") {
             errors.push("Employee Name is required");
             firstNameInput.classList.add("error");
+            Array.from(firstNameErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         // validate employee last name
         if (lastNameInput.value.trim() === "") {
             errors.push("Employee Name is required");
             lastNameInput.classList.add("error");
+            Array.from(lastNameErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         // validate employee email
         if (!emailRegex.test(emailInput.value)) {
             errors.push("please enter a valid email address");
             emailInput.classList.add("error");
+            Array.from(emailErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
 //    validate employee phone number
@@ -128,6 +180,9 @@ function validation(event, formType) {
         if (phoneNumberInput.value.trim() === "" && !phoneRegex.test(phoneNumberInput.value)) {
             errors.push("please enter a valid url");
             phoneNumberInput.classList.add("error");
+            Array.from(phoneErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
 
@@ -152,38 +207,72 @@ function validation(event, formType) {
         usernameInput.classList.remove("error");
         emailInput.classList.remove("error");
         passwordInput.classList.remove("error");
+        Array.from(firstNameErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(lastNameErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(usernameErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(emailErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(passwordErrors).forEach(error => {
+            error.classList.remove("error");
+        });
 
-    //     validate use first name
+
+        //     validate use first name
         if (firstNameInput.value.trim() === "") {
             errors.push("User first name is required");
             firstNameInput.classList.add("error");
+            Array.from(firstNameErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         // validate user last name
         if (lastNameInput.value.trim() === "") {
             errors.push("User last name is required");
             lastNameInput.classList.add("error");
+            Array.from(lastNameErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         // validate username
         if (usernameInput.value.trim() === "") {
             errors.push("username is required");
             usernameInput.classList.add("error");
+            Array.from(usernameErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
     //   validate user email
         if (!emailRegex.test(emailInput.value)) {
             errors.push("please enter a valid email address");
             emailInput.classList.add("error");
+            Array.from(emailErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
     //  validate user password
         if (!passwordInput.value.trim()) {
             errors.push("Password cannot be blank.");
             passwordInput.classList.add("error");
+            Array.from(passwordErrors).forEach(error => {
+                error.classList.add("error");
+            });
         } else if (!passwordRegex.test(passwordInput.value)) {
             errors.push("password must have one letter, one digit, one special character and at least 8 characters long");
             passwordInput.classList.add("error");
+            Array.from(passwordErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         if (errors.length > 0) {
@@ -199,17 +288,29 @@ function validation(event, formType) {
         let errors = [];
         emailInput.classList.remove("error");
         passwordInput.classList.remove("error");
+        Array.from(emailErrors).forEach(error => {
+            error.classList.remove("error");
+        });
+        Array.from(passwordErrors).forEach(error => {
+            error.classList.remove("error");
+        });
 
     //     validate email
         if (!emailRegex.test(emailInput.value)) {
             errors.push("please enter a valid email address");
             emailInput.classList.add("error");
+            Array.from(emailErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
     //     validate password
         if (!passwordInput.value.trim()) {
             errors.push("Password cannot be blank.");
             passwordInput.classList.add("error");
+            Array.from(passwordErrors).forEach(error => {
+                error.classList.add("error");
+            });
         }
 
         if (errors.length > 0) {

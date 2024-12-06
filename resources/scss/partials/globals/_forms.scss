@@ -48,6 +48,22 @@
             border-color: red;
         }
     }
+
+    p {
+        font-size: 0.71rem;
+        color: #FFDD00;
+        margin-top: 0;
+        margin-bottom: 5px;
+        display: none;
+    }
+
+    .firstNameError, .lastNameError, .usernameError, .emailError, .passwordError, .phoneError, .companyNameError, .companyWebsiteError {
+        &.error {
+            display: inline-block;
+        }
+    }
+
+
 }
 
 .deleteButton {
